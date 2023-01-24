@@ -4,20 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
   <title>Form validation with Js</title>
 </head>
 <body>
   <form>
     <label for="mail"> Email </label>
     <input type="email" id="mail">
+    <span class="error"></span>
     <label for="country"> Country </label>
     <input type="text" id="country">
+    <span class="error"></span>
     <label for="zipCode"> Zip Code </label>
     <input type="number" id="zipCode">
+    <span class="error"></span>
     <label for="pass">Password</label>
     <input type="text" id="pass">
+    <span class="error"></span>
     <label for="confPass">Confirm Password</label>
     <input type="text" id="confPass">
+    <span class="error"></span>
   </form>
 </body>
 </html>
