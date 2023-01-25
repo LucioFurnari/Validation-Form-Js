@@ -38,3 +38,7 @@ function checkPassword() {
     confirmPassInput.nextElementSibling.textContent = '';
   }
 }
+
+form.addEventListener('submit',(e) => {
+  e.preventDefault()
+})
