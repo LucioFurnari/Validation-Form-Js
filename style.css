@@ -75,7 +75,12 @@ ul {
 input {
   display: block;
 }
-
+input:valid {
+	border-bottom: 2px solid green;
+}
+input:invalid {
+	border-bottom: 2px solid red;
+}
 /*--------------------------------------------------------------------------*/
 
 .overlay {
