@@ -3,6 +3,7 @@ const countryInput = document.querySelector("#country");
 const zipInput = document.querySelector("#zipCode");
 const passwordInput = document.querySelector("#pass");
 const confirmPassInput = document.querySelector("#confPass");
+const form = document.querySelector("form");
 
 emailInput.addEventListener('focusout',showError)
 emailInput.addEventListener('input',showError)
