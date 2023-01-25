@@ -75,11 +75,15 @@ ul {
 input {
   display: block;
 }
+
 input:valid {
 	border-bottom: 2px solid green;
 }
 input:invalid {
 	border-bottom: 2px solid red;
+}
+input:placeholder-shown {
+	border-bottom: 1px solid 	black;
 }
 /*--------------------------------------------------------------------------*/
 
