@@ -11,16 +11,16 @@
 <body>
   <form>
     <label for="mail"> Email </label>
-    <input type="email" id="mail">
+    <input type="email" id="mail" minlength="8" required>
     <span class="error"></span>
     <label for="country"> Country </label>
-    <input type="text" id="country">
+    <input type="text" id="country" minlength="4" pattern="^[a-zA-Z]+$">
     <span class="error"></span>
     <label for="zipCode"> Zip Code </label>
     <input type="number" id="zipCode" min="0">
     <span class="error"></span>
     <label for="pass">Password</label>
-    <input type="text" id="pass" minlength="8">
+    <input type="text" id="pass" minlength="8" required>
     <span class="error"></span>
     <label for="confPass">Confirm Password</label>
     <input type="text" id="confPass">
