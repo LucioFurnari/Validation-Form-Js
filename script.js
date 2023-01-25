@@ -4,32 +4,36 @@ const zipInput = document.querySelector("#zipCode");
 const passwordInput = document.querySelector("#pass");
 const confirmPassInput = document.querySelector("#confPass");
 
-emailInput.addEventListener('focusout',(e) => {
-  console.log(emailInput.type);
-  showError(emailInput)
-})
+emailInput.addEventListener('focusout',showError)
+emailInput.addEventListener('input',showError)
 
-emailInput.addEventListener('input',(e) => {
-  console.log(emailInput.validity.valid);
-  showError(emailInput)
-})
+zipInput.addEventListener('input',showError);
+zipInput.addEventListener('focusout',showError);
+
 confirmPassInput.addEventListener('input',checkPassword);
 confirmPassInput.addEventListener('focusout',checkPassword);
 
-function showError(element) {
-  if(element.validity.typeMismatch) {
-    element.nextSibling.textContent = `Ingrese un ${element.type} valido.`;
-  } else if (element.validity.tooShort) {
-    element.nextSibling.textContent = `El ${element.type} es muy corto, minimo 8 caracteres`;
-  } else {
-    element.nextSibling.textContent = ``;
+
+function showError(event) {
+  const {target} = event;
+  const {typeMismatch, rangeUnderflow, patternMismatch, tooShort, valid} = event.target.validity;
+  if(valid) {
+    target.nextElementSibling.textContent = ``;
+  } else if(typeMismatch) {
+    target.nextElementSibling.textContent = `Ingrese un ${element.type} valido.`;
+  } else if (tooShort) {
+    target.nextElementSibling.textContent = `El ${element.type} es muy corto, minimo 8 caracteres`;
+  } else if (rangeUnderflow) {
+    target.nextElementSibling.textContent = `No puede ingresar números negativos`;
+  } else if (patternMismatch && target["name"] === "zipCode") {
+    target.nextElementSibling.textContent = `Solo puede ingresar números`;
   }
 }
 
 function checkPassword() {
   if(confirmPassInput.value !==  passwordInput.value) {
-    confirmPassInput.nextSibling.textContent = 'La contraseña no es igual';
+    confirmPassInput.nextElementSibling.textContent = 'La contraseña no es igual';
   } else {
-    confirmPassInput.nextSibling.textContent = '';
+    confirmPassInput.nextElementSibling.textContent = '';
   }
 }
