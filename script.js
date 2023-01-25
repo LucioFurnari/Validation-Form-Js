@@ -16,19 +16,24 @@ countryInput.addEventListener('focusout',showError);
 zipInput.addEventListener('input',showError);
 zipInput.addEventListener('focusout',showError);
 
+passwordInput.addEventListener('input',showError);
+passwordInput.addEventListener('focusout',showError);
+
 confirmPassInput.addEventListener('input',checkPassword);
 confirmPassInput.addEventListener('focusout',checkPassword);
 
 
 function showError(event) {
   const {target} = event;
-  const {typeMismatch, rangeUnderflow, patternMismatch, tooShort, valid} = event.target.validity;
+  const {typeMismatch, rangeUnderflow, patternMismatch, tooShort, valid, valueMissing} = event.target.validity;
   if(valid) {
     target.nextElementSibling.textContent = ``;
+  } else if (valueMissing) {
+    target.nextElementSibling.textContent = `No deje el campo vacio`;
   } else if(typeMismatch) {
     target.nextElementSibling.textContent = `Ingrese un ${target.type} valido.`;
   } else if (tooShort) {
-    target.nextElementSibling.textContent = `El ${target.type} es muy corto, minimo 8 caracteres`;
+    target.nextElementSibling.textContent = `Es muy corto, minimo ${target.getAttribute('minlength')} caracteres`;
   } else if (rangeUnderflow) {
     target.nextElementSibling.textContent = `No puede ingresar números negativos`;
   } else if (patternMismatch && target["name"] === "zipCode") {
@@ -41,10 +46,10 @@ function showError(event) {
 function checkPassword() {
   if(confirmPassInput.value !==  passwordInput.value) {
     isPassValid = false;
-    confirmPassInput.nextElementSibling.textContent = 'La contraseña no es igual';
+    confirmPassInput.setCustomValidity('La contraseña no es igual');
   } else {
     isPassValid = true;
-    confirmPassInput.nextElementSibling.textContent = '';
+    confirmPassInput.setCustomValidity('');
   }
 }
 
