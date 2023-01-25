@@ -67,7 +67,10 @@ ul {
 .form-element {
   padding: 1rem 0;
 }
-
+.error {
+	display: inline-block;
+	width: 150px;
+}
 input {
   display: block;
 }
