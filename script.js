@@ -27,8 +27,6 @@ function showError(element) {
 }
 
 function checkPassword() {
-  console.log(confirmPassInput.value);
-  console.log(passwordInput.value);
   if(confirmPassInput.value !==  passwordInput.value) {
     confirmPassInput.nextSibling.textContent = 'La contraseña no es igual';
   } else {
