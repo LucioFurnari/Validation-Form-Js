@@ -4,6 +4,7 @@ const zipInput = document.querySelector("#zipCode");
 const passwordInput = document.querySelector("#pass");
 const confirmPassInput = document.querySelector("#confPass");
 const form = document.querySelector("form");
+const overlay = document.querySelector(".overlay");
 
 emailInput.addEventListener('focusout',showError)
 emailInput.addEventListener('input',showError)
@@ -40,5 +41,8 @@ function checkPassword() {
 }
 
 form.addEventListener('submit',(e) => {
-  e.preventDefault()
+  e.preventDefault();
+  overlay.classList.add('active');
 })
+
+overlay.addEventListener('click',() => overlay.classList.remove('active'));
